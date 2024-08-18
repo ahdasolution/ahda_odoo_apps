@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <menuitem id="web_scraper_root_menu" name="Web scraper" sequence="99" groups="base.group_erp_manager" action="web_scraper_action" web_icon="ahda_web_scraper,static/description/icon.png"/>
+    </data>
+
+</odoo>

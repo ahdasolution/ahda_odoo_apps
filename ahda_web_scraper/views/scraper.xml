@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <!-- Form View -->
+        <record id="web_scraper_tree" model="ir.ui.view">
+            <field name="name">web.scraper.tree</field>
+            <field name="model">web.scraper</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="url" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="web_scraper_form" model="ir.ui.view">
+            <field name="name">web.scraper.form</field>
+            <field name="model">web.scraper</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="load_page" string="Load Page" type="object" class="oe_highlight"/>
+                        <button name="run_python_code" string="Run Method" attrs="{'invisible':[('python_code','=',False)]}" type="object" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="url"/>
+                            <label for="python_code" string="Python Code (executed after page loaded)"/>
+                            <div>
+                                <div style="font-size:80%;padding:5px;background:#F0FFFF ">
+                                    <field name="method_guide" readonly="1"/>
+                                </div>
+                                <br/>
+                                <field name="python_code" widget="ace"/>
+                                <br/>
+                                <div attrs="{'invisible':[('print','=',False)]}" style="font-size:110%;width:100%;color:white!important;padding:10px;background:black">
+                                    <field name="print"/>
+                                </div>
+                                <br/>
+                            </div>
+                            <field name="auto_run"/>
+                            <field name="interval_number" attrs="{'required':[('auto_run','=',True)],'invisible':[('auto_run','=',False)]}"/>
+                            <field name="interval_type" attrs="{'required':[('auto_run','=',True)],'invisible':[('auto_run','=',False)]}"/>
+                            <field name="nextcall" attrs="{'required':[('auto_run','=',True)],'invisible':[('auto_run','=',False)]}"/>
+                            <field name="cron_id" readonly="1" attrs="{'invisible':[('auto_run','=',False)]}"/>
+
+                        </group>
+                        <label for='html_source' attrs="{'invisible':[('html_source','=',False)]}"/>
+                        <div style="width:100%;color:white!important;padding:5px;background:black" attrs="{'invisible':[('html_source','=',False)]}">
+                            <field readonly="1" name="html_source" nolabel="1"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="web_scraper_action" model="ir.actions.act_window">
+            <field name="name">Web Scraper</field>
+            <field name="res_model">web.scraper</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    </data>
+
+
+</odoo>
