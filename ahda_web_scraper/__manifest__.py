@@ -1,7 +1,7 @@
 {
     "name": "Web Scraper for Odoo",
     "author": "AHDA Tech Solution",
-    "category": "Uncategorized",
+    "category": "Extra Tools",
     "version": "13.0.0",
     "license" : "LGPL-3",
     "depends": ["base", "mail"],
@@ -13,4 +13,7 @@ This module allows you to scrape a website and do something in odoo with the dat
         "views/menu_items.xml",
     ],
     "application": True,
+    'images': [
+        'static/description/thumbnail.png',
+    ],
 }
