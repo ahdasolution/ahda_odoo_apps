@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <menuitem id="selenium_scraper_root_menu" name="Selenium Scraper" sequence="99" groups="base.group_erp_manager" web_icon="ahda_selenium_scraper,static/description/icon.png"/>
+        <menuitem id="web_scraper_menu" name="Scraper" sequence="1" parent="selenium_scraper_root_menu" groups="base.group_erp_manager" action="web_scraper_action"/>
+
+        <menuitem id="selenium_server_menu" name="Server" sequence="2" parent="selenium_scraper_root_menu"  groups="base.group_erp_manager" action="selenium_server_action"/>
+    </data>
+
+</odoo>

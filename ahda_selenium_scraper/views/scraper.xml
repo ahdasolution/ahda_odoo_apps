@@ -1,7 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <data noupdate="1">
+        <record id="max_selenium_session" model="ir.config_parameter">
+            <field name="key">max_selenium_session</field>
+            <field name="value">3</field>
+        </record>
+
+        <record id="host_selenium_server" model="ir.config_parameter">
+            <field name="key">host_selenium_server</field>
+            <field name="value">http://localhost:4444</field>
+        </record>
+        <record id="host_selenium_server_browser_type" model="ir.config_parameter">
+            <field name="key">host_selenium_server_browser_type</field>
+            <field name="value">chrome</field>
+        </record>
+    </data>
 
     <data>
+
+
+<!-- selenium server -->
+<!-- Form View -->
+<record id="selenium_server_tree" model="ir.ui.view">
+    <field name="name">selenium.server.tree</field>
+    <field name="model">selenium.server</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="selenium_host" />
+            <field name="browser_type" />
+            <field name="state"/>
+        </tree>
+    </field>
+</record>
+
+<record id="selenium_server_form" model="ir.ui.view">
+    <field name="name">selenium.server.form</field>
+    <field name="model">selenium.server</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+                <button name="close_all_driver" string="Close All Driver" type="object" class="oe_highlight"/>
+                <field name="state" widget="statusbar"/>
+            </header>
+            <sheet>
+                <group>
+                    <field name="selenium_host"/>
+                    <field name="browser_type"/>
+                    <field name="max_session"/>
+                </group>
+                <!-- <label for='html_source' attrs="{'invisible':[('html_source','=',False)]}"/>
+                <div style="width:100%;color:white!important;padding:5px;background:black" attrs="{'invisible':[('html_source','=',False)]}">
+                    <field readonly="1" name="html_source" nolabel="1"/>
+                </div> -->
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="selenium_server_action" model="ir.actions.act_window">
+    <field name="name">selenium server</field>
+    <field name="res_model">selenium.server</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
 
         <!-- Form View -->
         <record id="web_scraper_tree" model="ir.ui.view">
@@ -26,6 +87,7 @@
                     <sheet>
                         <group>
                             <field name="url"/>
+                            <field name="server_id"/>
                             <label for="python_code" string="Python Code (executed after page loaded)"/>
                             <div>
                                 <div style="font-size:80%;padding:5px;background:#F0FFFF ">

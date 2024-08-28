@@ -1,5 +1,5 @@
 {
-    "name": "Web Scraper for Odoo",
+    "name": "Selenium Scraper for Odoo",
     "author": "AHDA Tech Solution",
     "category": "Extra Tools",
     "version": "13.0.0",

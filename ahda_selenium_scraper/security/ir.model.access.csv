@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_web_scraper,access_web_scraper,model_web_scraper,,1,1,1,1
+access_selenium_server,access_selenium_server,model_selenium_server,,1,1,1,1
